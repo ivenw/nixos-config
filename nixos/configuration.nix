@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, lib, config, pkgs, ... }:
+{ inputs, lib, config, pkgs, pkgs-unstable, ... }:
 
 {
   imports =
@@ -125,10 +125,11 @@
   environment.systemPackages = with pkgs; [
     wget
     curl
-    git
     vim
     home-manager
+    pkgs-unstable.git
   ];
+
 
   # Enable ZSH and set as default
   programs.zsh.enable = true;

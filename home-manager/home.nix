@@ -52,8 +52,10 @@
     ripgrep
     tree
     lf
-    nixpkgs-fmt
 
+    # Nix
+    nixpkgs-fmt
+    rnix-lsp
 
     # gui apps
     firefox
@@ -67,10 +69,30 @@
 
   # Enable home-manager and git
   programs.home-manager.enable = true;
+
+  programs.zsh = {
+    enable = true;
+    shellAliases = {
+      rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      update = "home-manager switch --flake ~/nixos-config";
+      py38-dev = "nix develop ~/nixos-config#python38 -c $SHELL";
+    };
+    oh-my-zsh = {
+      enable = true;
+    };
+  };
+
+
   programs.git = {
     enable = true;
     userName = "Iven Winkelmann";
     userEmail = "winkelmann.iven@gmail.com";
+    aliases = {
+      s = "status";
+    };
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   programs.alacritty = {
@@ -99,7 +121,6 @@
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode.fhs;
   };
 
   # Nicely reload system units when changing configs
