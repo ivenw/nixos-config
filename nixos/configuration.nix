@@ -48,24 +48,28 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
 
   # Enable Hyprland Window Manager and apply related configs
-  #  programs.hyprland = {
-  #    enable = true;
-  #    xwayland.enable = true;
-  #  };
-  #  environment.sessionVariables = {
-  #    NIXOS_OZONE_WL = "1";
-  #  };
-  #  hardware.opengl.enable = true;
-
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+  hardware.opengl.enable = true;
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "colemak_dh_iso";
   };
+
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -115,7 +119,7 @@
   users.users.ivenw = {
     isNormalUser = true;
     description = "Iven Winkelmann";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     ];
   };
@@ -128,6 +132,20 @@
     vim
     home-manager
     pkgs-unstable.git
+    pkgs-unstable.neofetch
+
+    xterm
+    firefox
+
+    # Hyprland related
+    pkgs-unstable.hyprland
+    (pkgs-unstable.waybar.overrideAttrs (oldAttrs: {
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    })
+    )
+    pkgs-unstable.rofi-wayland
+    pkgs-unstable.dunst
+    pkgs-unstable.swww
   ];
 
 

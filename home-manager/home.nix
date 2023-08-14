@@ -1,15 +1,16 @@
 # This is your home-manager configuration file
 # Use this to configure your home environment (it replaces ~/.config/nixpkgs/home.nix)
 
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, pkgs-unstable, nix-colors, ... }: {
   # You can import other home-manager modules here
   imports = [
-    # If you want to use home-manager modules from other flakes (such as nix-colors):
-    # inputs.nix-colors.homeManagerModule
+    nix-colors.homeManagerModules.default
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
   ];
+
+  colorScheme = nix-colors.colorSchemes.selenized-dark;
 
   nixpkgs = {
     # You can add overlays here
@@ -33,10 +34,12 @@
     };
   };
 
+
   home = {
     username = "ivenw";
     homeDirectory = "/home/ivenw";
   };
+
 
   fonts.fontconfig.enable = true;
 
@@ -52,22 +55,24 @@
     ripgrep
     tree
     lf
+    pkgs-unstable.helix
+    pkgs-unstable.neovim
 
     # Nix
     nixpkgs-fmt
     rnix-lsp
 
     # gui apps
-    firefox
     chromium
     _1password-gui
+    pkgs-unstable.obsidian
 
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
   ];
 
 
-  # Enable home-manager and git
+  # Enable home-manager 
   programs.home-manager.enable = true;
 
   programs.zsh = {
@@ -75,7 +80,7 @@
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
       update = "home-manager switch --flake ~/nixos-config";
-      py38-dev = "nix develop ~/nixos-config#python38 -c $SHELL";
+      cleanup = "sudo nix profile wipe-history";
     };
     oh-my-zsh = {
       enable = true;
@@ -104,6 +109,11 @@
         normal.family = "JetBrainsMono Nerd Font";
       };
       window.padding = { x = 5; y = 0; };
+      colors = let colors = config.colorScheme.colors; in
+        {
+          primary.background = "#${colors.base00}";
+          primary.foreground = "#${colors.base05}";
+        };
     };
   };
 

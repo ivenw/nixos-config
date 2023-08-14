@@ -2,26 +2,35 @@
   description = "Your new nix config";
 
   inputs = {
-    # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Home manager
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-23.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    # TODO: Add any other flake you might need
+    # hyprland.url = "github:hyprwm/Hyprland";
+
+    nix-colors.url = "github:misterio77/nix-colors";
+
     # hardware.url = "github:nixos/nixos-hardware";
 
-    # Shameless plug: looking for a way to nixify your themes and make
-    # everything match nicely? Try nix-colors!
-    # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, home-manager, ... }@inputs:
+  outputs =
+    { nixpkgs
+    , nixpkgs-unstable
+    , home-manager
+      # , hyprland
+    , nix-colors
+    , ...
+    }@inputs:
     let
+      username = "ivenw";
       system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
+      pkgs-unstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
     in
     {
       # NixOS configuration entrypoint
@@ -31,10 +40,7 @@
 
           specialArgs = {
             inherit inputs;
-            pkgs-unstable = import nixpkgs-unstable {
-              inherit system;
-              config.allowUnfree = true;
-            };
+            inherit pkgs-unstable;
           }; # Pass flake inputs to our config
           modules = [ ./nixos/configuration.nix ];
         };
@@ -42,13 +48,16 @@
 
       # Standalone home-manager configuration entrypoint
       # Available through 'home-manager --flake .#your-username@your-hostname'
-      homeConfigurations = {
-        "ivenw@nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux; # Home-manager requires 'pkgs' instance
-          extraSpecialArgs = { inherit inputs; }; # Pass flake inputs to our config
-          modules = [ ./home-manager/home.nix ];
-        };
+      homeConfigurations."${username}" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages."${system}"; # Home-manager requires 'pkgs' instance
+        extraSpecialArgs = {
+          inherit inputs;
+          pkgs-unstable = nixpkgs-unstable.legacyPackages."${system}";
+          inherit nix-colors;
+        }; # Pass flake inputs to our config
+        modules = [ ./home-manager/home.nix ];
       };
+
 
       devShells.x86_64-linux.python38 = pkgs.mkShell {
         nativeBuildInputs = [
