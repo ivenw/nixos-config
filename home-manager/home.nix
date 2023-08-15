@@ -5,29 +5,17 @@
   # You can import other home-manager modules here
   imports = [
     nix-colors.homeManagerModules.default
-
+    ./test.nix
+    # ./alacritty.nix
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
   ];
 
-  colorScheme = nix-colors.colorSchemes.selenized-dark;
+  colorScheme = nix-colors.colorSchemes.dracula;
+  # colorScheme = nix-colors.colorSchemes.selenized-dark;
 
   nixpkgs = {
-    # You can add overlays here
-    overlays = [
-      # If you want to use overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
-
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
-    ];
-    # Configure your nixpkgs instance
     config = {
-      # Disable if you don't want unfree packages
       allowUnfree = true;
       # Workaround for https://github.com/nix-community/home-manager/issues/2942
       allowUnfreePredicate = (_: true);
@@ -47,7 +35,7 @@
   home.packages = with pkgs; [
     # cli and tui apps 
     gh
-    azure-cli
+    # azure-cli
     bat
     exa
     delta
@@ -55,8 +43,7 @@
     ripgrep
     tree
     lf
-    pkgs-unstable.helix
-    pkgs-unstable.neovim
+    helix
 
     # Nix
     nixpkgs-fmt
@@ -65,7 +52,7 @@
     # gui apps
     chromium
     _1password-gui
-    pkgs-unstable.obsidian
+    obsidian
 
     # fonts
     (pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
@@ -97,23 +84,6 @@
     };
     extraConfig = {
       init.defaultBranch = "main";
-    };
-  };
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      env.TERM = "xterm-256color";
-      font = {
-        # size = 14;
-        normal.family = "JetBrainsMono Nerd Font";
-      };
-      window.padding = { x = 5; y = 0; };
-      colors = let colors = config.colorScheme.colors; in
-        {
-          primary.background = "#${colors.base00}";
-          primary.foreground = "#${colors.base05}";
-        };
     };
   };
 

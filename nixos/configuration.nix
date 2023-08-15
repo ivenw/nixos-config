@@ -131,21 +131,21 @@
     curl
     vim
     home-manager
-    pkgs-unstable.git
-    pkgs-unstable.neofetch
+    git
+    neofetch
 
     xterm
     firefox
 
     # Hyprland related
-    pkgs-unstable.hyprland
-    (pkgs-unstable.waybar.overrideAttrs (oldAttrs: {
+    hyprland
+    (waybar.overrideAttrs (oldAttrs: {
       mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     })
     )
-    pkgs-unstable.rofi-wayland
-    pkgs-unstable.dunst
-    pkgs-unstable.swww
+    rofi-wayland
+    dunst
+    swww
   ];
 
 
