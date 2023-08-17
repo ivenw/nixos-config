@@ -2,7 +2,7 @@
 theme "catppuccin-macchiato"
 
 // Choose default layout for a new tab
-// default_layout "top-status-bar"
+default_layout "top-status-bar"
 
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {

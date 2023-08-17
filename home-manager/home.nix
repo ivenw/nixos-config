@@ -1,10 +1,4 @@
-{
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./alacritty
     ./nvim
@@ -35,19 +29,20 @@
     # azure-cli
     bat
     exa
-
+    fd
     delta
     tokei
     ripgrep
     tree
     lf
     helix
+    deno
 
-    # Nix
-    nixpkgs-fmt
+    # linters and formatters
     alejandra
-    nil
-    rnix-lsp
+    stylua
+    black
+    ruff
 
     # gui apps
     chromium
