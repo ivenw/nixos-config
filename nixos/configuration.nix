@@ -1,15 +1,18 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ inputs, lib, config, pkgs, pkgs-unstable, ... }:
-
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  inputs,
+  lib,
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -48,19 +51,39 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  # services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+    ])
+    ++ (with pkgs.gnome; [
+      cheese # webcam tool
+      gnome-music
+      gnome-terminal
+      gedit # text editor
+      epiphany # web browser
+      geary # email reader
+      evince # document viewer
+      gnome-characters
+      totem # video player
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+    ]);
 
   # Enable Hyprland Window Manager and apply related configs
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
+  #programs.hyprland = {
+  #  enable = true;
+  #  xwayland.enable = true;
+  #};
+  #environment.sessionVariables = {
+  #  NIXOS_OZONE_WL = "1";
+  #};
   hardware.opengl.enable = true;
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
 
   # Configure keymap in X11
   services.xserver = {
@@ -94,14 +117,13 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
@@ -119,7 +141,7 @@
   users.users.ivenw = {
     isNormalUser = true;
     description = "Iven Winkelmann";
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
     packages = with pkgs; [
     ];
   };
@@ -132,22 +154,20 @@
     vim
     home-manager
     git
-    neofetch
+    git-credential-manager
 
     xterm
     firefox
 
     # Hyprland related
-    hyprland
-    (waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    })
-    )
-    rofi-wayland
-    dunst
-    swww
+    #(waybar.overrideAttrs (oldAttrs: {
+    #  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+    #})
+    #)
+    #rofi-wayland
+    #dunst
+    #swww
   ];
-
 
   # Enable ZSH and set as default
   programs.zsh.enable = true;
@@ -179,5 +199,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.05"; # Did you read the comment?
-
 }
