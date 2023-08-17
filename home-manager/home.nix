@@ -3,7 +3,6 @@
   lib,
   config,
   pkgs,
-  nix-colors,
   ...
 }: {
   imports = [
@@ -11,7 +10,7 @@
     ./nvim
     ./git.nix
     ./starship.nix
-    ./zellij.nix
+    ./zellij
     ./zsh.nix
   ];
 
@@ -56,7 +55,7 @@
     obsidian
 
     # fonts
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono"];})
+    (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
 
   # Enable home-manager

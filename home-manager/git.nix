@@ -13,7 +13,10 @@
     };
     extraConfig = {
       init.defaultBranch = "main";
-      credential.helper = "credential-manager-core";
+      credential = {
+        credentialStore = "secretservice";
+        helper = "/run/current-system/sw/bin/git-credential-manager";
+      };
     };
   };
 }
