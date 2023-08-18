@@ -4,6 +4,7 @@
     ./nvim
     ./git.nix
     ./starship.nix
+    ./tmux
     ./zellij
     ./zsh.nix
   ];
@@ -35,6 +36,7 @@
     ripgrep
     tree
     lf
+    nnn
     helix
     deno
 

@@ -7,7 +7,7 @@
       cleanup = "sudo nix profile wipe-history";
       nd = "mkdir -pv";
       nf = "touch";
-      rmdir = "rm -rIv";
+      deldir = "rm -rIv";
     };
     oh-my-zsh = {
       enable = true;
