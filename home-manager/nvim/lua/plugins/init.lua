@@ -3,14 +3,13 @@ return {
 
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "lukas-reineke/indent-blankline.nvim", opts = {} },
-	{
-		"numToStr/Comment.nvim",
-		opts = {},
-		config = function()
-			require("Comment").setup()
-		end,
-	},
+	{ "numToStr/Comment.nvim", opts = {} },
 	{ "nvim-lualine/lualine.nvim", opts = {} },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		opts = {},
+	},
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
@@ -24,10 +23,5 @@ return {
 		config = function()
 			require("leap").add_default_mappings()
 		end,
-	},
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 }

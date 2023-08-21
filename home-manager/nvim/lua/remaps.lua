@@ -10,11 +10,11 @@ km.set("n", "<C-d>", "<C-d>zz")
 -- Easy access to commands
 km.set("n", "<leader><leader>", ":", { desc = "Open command line" })
 km.set("n", "<leader>w", ":w<CR>", { desc = "Write file" })
-km.set("n", "<leader>q", ":q<CR>", { desc = "Close buffer" })
+km.set("n", "<leader>q", ":bd<CR>", { desc = "Close buffer" })
 
 -- Split management
-km.set("n", "<leader>sv", ":vnew<CR>", { desc = "New pane" })
-km.set("n", "<leader>sx", ":close<CR>", { desc = "Close pane" })
+km.set("n", "<leader>pn", ":vnew<CR>", { desc = "New pane" })
+km.set("n", "<leader>px", ":close<CR>", { desc = "Close pane" })
 
 -- Tab managment
 -- km.set("n", "<leader>tn", ":tabnew<CR>", { desc = "New tab" })
@@ -28,13 +28,5 @@ km.set("n", "<leader>i", vim.lsp.buf.hover, { desc = "Symbol info" })
 -- Telescope
 km.set("n", "<leader>f", "<cmd>Telescope find_files<cr>", { desc = "Find file" })
 km.set("n", "<leader>t", "<cmd>Telescope treesitter<cr>", { desc = "Search tree" })
-
-require("telescope").setup({
-	defaults = {
-		mappings = {
-			i = {
-				["<esc>"] = require("telescope.actions").close,
-			},
-		},
-	},
-})
+km.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", { desc = "Search tree" })
+km.set("n", "<leader>g", "<cmd>Telescope live_grep<cr>", { desc = "Search tree" })

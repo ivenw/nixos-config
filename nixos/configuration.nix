@@ -65,7 +65,6 @@
       epiphany # web browser
       geary # email reader
       evince # document viewer
-      gnome-characters
       totem # video player
       tali # poker game
       iagno # go game
@@ -158,6 +157,9 @@
 
     xterm
     firefox
+
+    # Gnome
+    gnome.gnome-tweaks
 
     # Hyprland related
     #(waybar.overrideAttrs (oldAttrs: {

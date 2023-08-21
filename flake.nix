@@ -20,6 +20,7 @@
     username = "ivenw";
     hostname = "nixos";
     system = "x86_64-linux";
+    pkgs = import nixpkgs {inherit system;};
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -40,6 +41,26 @@
         inherit inputs;
       }; # Pass flake inputs to our config
       modules = [./home-manager/home.nix];
+    };
+
+    devShells."${system}" = {
+      python310 = pkgs.mkShell {
+        name = "python310";
+        packages = with pkgs; [
+          python310
+          poetry
+          gcc
+        ];
+        shellHook = ''
+          export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib"
+        '';
+      };
+      rust = pkgs.mkShell {
+        name = "rust";
+        packages = with pkgs; [
+          rustup
+        ];
+      };
     };
   };
 }

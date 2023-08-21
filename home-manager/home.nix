@@ -26,11 +26,13 @@
 
   home.packages = with pkgs; [
     # cli and tui apps
+    atuin
+    bat
     gh
     # azure-cli
-    bat
     exa
     fd
+    fzf
     delta
     tokei
     ripgrep
@@ -39,6 +41,7 @@
     nnn
     helix
     deno
+    zoxide
 
     # linters and formatters
     alejandra
@@ -50,6 +53,8 @@
     chromium
     _1password-gui
     obsidian
+    vscode
+    vial
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
@@ -57,10 +62,6 @@
 
   # Enable home-manager
   programs.home-manager.enable = true;
-
-  programs.vscode = {
-    enable = true;
-  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";

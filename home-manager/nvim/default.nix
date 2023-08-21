@@ -6,12 +6,13 @@
   programs.neovim = {
     enable = true;
     viAlias = true;
-    vimAlias = true;
     extraPackages = with pkgs; [
       # treesitter
       gcc
       nodejs_18
+      tree-sitter
 
+      # Linting & formatting lsp
       efm-langserver
 
       # Nix
@@ -33,7 +34,6 @@
   };
 
   xdg.configFile.nvim = {
-    source = config.lib.file.mkOutOfStoreSymlink ./.;
-    recursive = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home-manager/nvim";
   };
 }

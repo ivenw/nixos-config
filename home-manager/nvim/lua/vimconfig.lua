@@ -13,6 +13,9 @@ opt.termguicolors = true
 opt.number = true
 opt.relativenumber = true
 
+-- cursorline
+opt.cursorline = true
+
 -- tab settings
 opt.tabstop = 4
 opt.softtabstop = 4
@@ -20,15 +23,20 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 
+-- saving settings
+opt.swapfile = false
+opt.backup = false
+
 -- line wrapping
 opt.wrap = false
 
 -- search settings
 opt.ignorecase = true
 opt.smartcase = true
+opt.incsearch = true
 
--- cursorline
-opt.cursorline = true
+-- scroll settings
+opt.scrolloff = 8
 
 -- shorten timeoutlen
 opt.timeoutlen = 100

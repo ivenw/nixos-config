@@ -19,6 +19,7 @@ return {
 				"nil_ls",
 				"rust_analyzer",
 				"ruff_lsp",
+				"pyright",
 				"efm",
 			})
 		end,
@@ -39,6 +40,7 @@ return {
 			{ "L3MON4D3/LuaSnip" },
 		},
 	},
+
 	-- Formatting
 	{
 		-- "creativenull/efmls-configs-nvim",

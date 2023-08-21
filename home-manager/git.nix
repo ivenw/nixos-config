@@ -13,9 +13,22 @@
     };
     extraConfig = {
       init.defaultBranch = "main";
+
+      # GCM
       credential = {
         credentialStore = "secretservice";
         helper = "/run/current-system/sw/bin/git-credential-manager";
+      };
+      credential."dev.azure.com".useHttpPath = true;
+
+      # Delta
+      core.pager = "delta";
+      interactive.diffFilter = "delta --color-only --theme=base16-256";
+      delta = {
+        navigate = true;
+        light = false;
+        merge.conflictstyle = "diff3";
+        diff.colorMoved = "default";
       };
     };
   };
