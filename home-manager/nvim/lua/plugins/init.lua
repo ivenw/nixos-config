@@ -10,13 +10,11 @@ return {
 		event = "InsertEnter",
 		opts = {},
 	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			vim.cmd.colorscheme("catppuccin-macchiato")
-		end,
-	},
+	-- {
+	-- 	"m4xshen/hardtime.nvim",
+	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+	-- 	opts = {},
+	-- },
 	{
 		"ggandor/leap.nvim",
 		dependencies = "tpope/vim-repeat",

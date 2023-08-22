@@ -27,6 +27,7 @@ km.set("n", "<leader>i", vim.lsp.buf.hover, { desc = "Symbol info" })
 
 -- Telescope
 km.set("n", "<leader>f", "<cmd>Telescope find_files<cr>", { desc = "Find file" })
-km.set("n", "<leader>t", "<cmd>Telescope treesitter<cr>", { desc = "Search tree" })
-km.set("n", "<leader>b", "<cmd>Telescope buffers<cr>", { desc = "Search tree" })
-km.set("n", "<leader>g", "<cmd>Telescope live_grep<cr>", { desc = "Search tree" })
+km.set("n", "<leader>tb", "<cmd>Telescope buffers<cr>", { desc = "Search buffers" })
+km.set("n", "<leader>tg", "<cmd>Telescope live_grep<cr>", { desc = "Grep saerch" })
+km.set("n", "<leader>td", "<cmd>Telescope lsp_definitions<cr>", { desc = "Show definitions" })
+km.set("n", "<leader>tr", "<cmd>Telescope lsp_references<cr>", { desc = "Show references" })
