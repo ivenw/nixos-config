@@ -12,6 +12,12 @@ km.set("n", "<leader><leader>", ":", { desc = "Open command line" })
 km.set("n", "<leader>w", ":w<CR>", { desc = "Write file" })
 km.set("n", "<leader>q", ":bd<CR>", { desc = "Close buffer" })
 
+-- Clear search
+km.set("n", "<leader>cs", ':let @/ = ""<CR>', { desc = "Clear search" })
+
+-- unbind search
+km.set("n", "n", "")
+
 -- Split management
 km.set("n", "<leader>pn", ":vnew<CR>", { desc = "New pane" })
 km.set("n", "<leader>px", ":close<CR>", { desc = "Close pane" })
@@ -20,7 +26,7 @@ km.set("n", "<leader>px", ":close<CR>", { desc = "Close pane" })
 -- km.set("n", "<leader>tn", ":tabnew<CR>", { desc = "New tab" })
 -- km.set("n", "<leader>tx", ":tabclose<CR>", { desc = "Close tab" })
 -- km.set("n", "K", ":tabnext<CR>")
--- km.set("n", "J", ":tabprevious<CR>")
+-- km.set("n", "J", ":tabpreviors<CR>")
 
 -- LSP
 km.set("n", "<leader>i", vim.lsp.buf.hover, { desc = "Symbol info" })

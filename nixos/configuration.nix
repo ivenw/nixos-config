@@ -73,10 +73,10 @@
     ]);
 
   # Enable Hyprland Window Manager and apply related configs
-  #programs.hyprland = {
-  #  enable = true;
-  #  xwayland.enable = true;
-  #};
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
   #environment.sessionVariables = {
   #  NIXOS_OZONE_WL = "1";
   #};
@@ -162,13 +162,14 @@
     gnome.gnome-tweaks
 
     # Hyprland related
-    #(waybar.overrideAttrs (oldAttrs: {
-    #  mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-    #})
-    #)
-    #rofi-wayland
-    #dunst
-    #swww
+    (
+      waybar.overrideAttrs (oldAttrs: {
+        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      })
+    )
+    rofi-wayland
+    dunst
+    swww
   ];
 
   # Enable ZSH and set as default

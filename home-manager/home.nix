@@ -56,6 +56,9 @@
     vscode
     vial
 
+    # volvo crap
+    citrix_workspace
+
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
   ];
