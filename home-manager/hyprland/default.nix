@@ -1,9 +1,5 @@
 {config, ...}: {
-  rograms.hyprland = {
-    enabled = true;
-  };
-
-  xdg.configFile.nvim = {
+  xdg.configFile.hypr = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home-manager/hyprland";
   };
 }

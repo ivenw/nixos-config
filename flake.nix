@@ -40,7 +40,9 @@
       extraSpecialArgs = {
         inherit inputs;
       }; # Pass flake inputs to our config
-      modules = [./home-manager/home.nix];
+      modules = [
+        ./home-manager/home.nix
+      ];
     };
 
     devShells."${system}" = {

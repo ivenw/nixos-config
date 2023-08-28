@@ -1,9 +1,9 @@
 {config, ...}: {
-  rograms.waybar = {
-    enabled = true;
+  programs.waybar = {
+    enable = true;
   };
 
-  xdg.configFile.nvim = {
+  xdg.configFile.waybar = {
     source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/nixos-config/home-manager/waybar";
   };
 }

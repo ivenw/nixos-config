@@ -5,6 +5,8 @@
     ./git.nix
     ./starship.nix
     ./tmux
+    ./hyprland
+    ./waybar
     ./zellij
     ./zsh.nix
   ];
