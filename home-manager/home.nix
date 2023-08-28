@@ -55,6 +55,7 @@
     obsidian
     vscode
     vial
+    font-manager
 
     # volvo crap
     citrix_workspace

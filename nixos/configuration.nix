@@ -6,7 +6,6 @@
   lib,
   config,
   pkgs,
-  pkgs-unstable,
   ...
 }: {
   imports = [
@@ -51,38 +50,39 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-photos
-      gnome-tour
-    ])
-    ++ (with pkgs.gnome; [
-      cheese # webcam tool
-      gnome-music
-      gnome-terminal
-      gedit # text editor
-      epiphany # web browser
-      geary # email reader
-      evince # document viewer
-      totem # video player
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-    ]);
+  # services.xserver.desktopManager.gnome.enable = true;
+  # environment.gnome.excludePackages =
+  #   (with pkgs; [
+  #     gnome-photos
+  #     gnome-to r
+  #   ])
+  #   ++ (with pkgs.gnome; [
+  #     cheese # webcam tool
+  #     gnome-music
+  #     gnome-terminal
+  #     gedit # text editor
+  #     epiphany # web browser
+  #     geary # email reader
+  #     evince # document viewer
+  #     totem # video player
+  #     tali # poker game
+  #     iagno # go game
+  #     hitori # sudoku game
+  #     atomix # puzzle game
+  #   ]);
 
   # Enable Hyprland Window Manager and apply related configs
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
   };
-  #environment.sessionVariables = {
-  #  NIXOS_OZONE_WL = "1";
-  #};
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+  };
+  hardware.bluetooth.enable = true;
   hardware.opengl.enable = true;
   xdg.portal.enable = true;
-  #xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # Configure keymap in X11
   services.xserver = {
@@ -148,6 +148,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Essentials
     wget
     curl
     vim
@@ -157,9 +158,6 @@
 
     xterm
     firefox
-
-    # Gnome
-    gnome.gnome-tweaks
 
     # Hyprland related
     (

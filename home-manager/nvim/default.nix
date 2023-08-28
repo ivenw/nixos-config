@@ -30,6 +30,9 @@
       # Lua
       lua-language-server
       stylua
+
+      # Web
+      nodePackages.prettier
     ];
   };
 

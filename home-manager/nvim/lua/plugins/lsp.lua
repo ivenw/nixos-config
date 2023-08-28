@@ -48,6 +48,7 @@ return {
 		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
 			local efmls = require("efmls-configs")
+			local prettier = require("efmls-configs.formatters.prettier")
 			efmls.init({
 				-- Enable formatting provided by efm langserver
 				init_options = {
@@ -58,6 +59,9 @@ return {
 				lua = { formatter = require("efmls-configs.formatters.stylua") },
 				python = { formatter = require("efmls-configs.formatters.black") },
 				nix = { formatter = require("efmls-configs.formatters.alejandra") },
+				css = { formatter = prettier },
+				json = { formatter = prettier },
+				html = { formatter = prettier },
 			})
 		end,
 	},

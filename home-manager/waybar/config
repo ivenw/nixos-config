@@ -1,0 +1,109 @@
+/* vim: set filetype=json : */
+
+{
+    "layer": "top",
+    "position": "bottom",
+
+    "modules-left": ["wlr/workspaces"],
+    "modules-center": ["clock"],
+    "modules-right": ["group/utils", "group/system", "custom/power"],
+    
+    "group/utils": {
+        "orientation": "horizontal",
+        "modules": ["pulseaudio", "bluetooth", "network", "battery"]
+    },
+    "group/system": {
+        "orientation": "horizontal",
+        "modules": ["memory", "cpu", "disk"]
+    },
+
+    "wlr/workspaces": {
+        "format": "{icon}",
+        "persistent_workspaces": {
+            "1": [],
+            "2": [],
+            "3": [],
+            "4": [],
+        },
+        /*
+        "format-icons": {
+            "default": "○",
+            "active": "●",
+        }
+        */
+    }, 
+
+    "hyprland/window": { "max-length": 200, "separate-outputs": true },
+
+    "clock": {
+        "format": "{:%a %H:%M %d-%m}",
+        "tooltip": false
+    },
+
+
+    "memory": {
+        "interval": 5,
+        "format": "󰍛 {}%"
+    },
+    "cpu": {
+        "interval": 5,
+        "format": " {usage:2}%"
+    },
+    "disk": {
+        "interval": 5,
+        "format": "󰋊 {percentage_used:2}%",
+        "path": "/"
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume:2}%",
+        "format-bluetooth": "{icon}  {volume:2}%",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["", ""],
+            "headphones": "",
+            "bluetooth": ""
+        },
+        "scroll-step": 5,
+        "on-click": "pamixer -t",
+        "on-click-right": "pavucontrol"
+    },
+    "bluetooth": {
+	    "format": "{icon}",
+	    "format-connected-battery": " {device_battery_percentage}%",
+	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "format-icons": {
+            "default": "󰂯",
+            "connected": "󰂱",
+            "disabled": "󰂲",
+            "off": "󰂲"
+        }
+    },
+    "network": {
+        "format": "{ifname}",
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ipaddr}/{cidr} 󰈀",
+        "format-disconnected": "󰤭", //An empty format will hide the module.
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+        "tooltip-format-ethernet": "{ifname} ",
+        "tooltip-format-disconnected": "Disconnected",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤨"]
+    },
+    "battery": {
+        "states": {
+            "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity:3}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "tray": {
+        "icon-size": 20
+    }
+}

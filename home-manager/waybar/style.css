@@ -1,0 +1,56 @@
+@import "macchiato.css";
+
+* {
+    font-size: 13px;
+    font-family: "JetBrainsMono Nerd Font";
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+}
+
+#workspaces,
+#clock,
+#utils,
+#system {
+    background: @mantle;
+    color: @text;
+    padding: 5px;
+    margin: 0 5px 5px 5px;
+    border-radius: 15px;
+}
+
+#clock,
+#pulseaudio,
+#memory,
+#cpu,
+#battery,
+#network,
+#bluetooth,
+#disk {
+    padding: 0 10px;
+}
+
+#workspaces button {
+    padding: 0 2px;
+    color: @subtext0;
+}
+#workspaces button.active {
+    color: @blue;
+}
+
+#pulseaudio {
+    /* color: @blue; */
+}
+#battery {
+    /* color: @yellow; */
+}
+#memory {
+    /* color: @peach; */
+}
+#cpu {
+    /* color: @maroon; */
+}
+#disk {
+    /* color: @red; */
+}
