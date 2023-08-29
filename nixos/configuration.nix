@@ -154,6 +154,8 @@
     vim
     home-manager
     git
+    libsecret
+    gnome.gnome-keyring
     git-credential-manager
 
     xterm
@@ -169,6 +171,8 @@
     dunst
     swww
   ];
+
+  programs.seahorse.enable = true;
 
   # Enable ZSH and set as default
   programs.zsh.enable = true;

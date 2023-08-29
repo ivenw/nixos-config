@@ -1,6 +1,13 @@
 import:
   - ~/.config/alacritty/themes/catppuccin-macchiato.yml
 
+shell:
+  program: zsh
+  args:
+    - -l
+    - -c
+    - "zellij"
+
 font:
   normal:
     family: JetBrainsMono Nerd Font
