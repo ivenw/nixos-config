@@ -58,6 +58,7 @@
     vscode
     vial
     font-manager
+    blueman
 
     # volvo crap
     citrix_workspace

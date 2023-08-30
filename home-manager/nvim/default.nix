@@ -20,7 +20,7 @@
       alejandra
 
       # Rust
-      rust-analyzer
+      # rust-analyzer
 
       # Python
       nodePackages.pyright

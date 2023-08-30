@@ -59,9 +59,11 @@ return {
 				lua = { formatter = require("efmls-configs.formatters.stylua") },
 				python = { formatter = require("efmls-configs.formatters.black") },
 				nix = { formatter = require("efmls-configs.formatters.alejandra") },
+				rust = { formatter = require("efmls-configs.formatters.rustfmt") },
 				css = { formatter = prettier },
 				json = { formatter = prettier },
 				html = { formatter = prettier },
+				handlebars = { formatter = prettier },
 			})
 		end,
 	},

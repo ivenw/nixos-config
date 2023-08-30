@@ -2,7 +2,7 @@
 theme "catppuccin-macchiato"
 
 // Choose default layout for a new tab
-default_layout "top-status-bar"
+// default_layout "top-status-bar"
 
 simplified_ui false
 pane_frames false
