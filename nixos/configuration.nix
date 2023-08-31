@@ -136,6 +136,11 @@
     };
   };
 
+  # Enable Vial support
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
+  '';
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ivenw = {
     isNormalUser = true;
@@ -170,8 +175,15 @@
     rofi-wayland
     dunst
     swww
+    swaylock
+    catppuccin-cursors.macchiatoLight
   ];
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
   programs.seahorse.enable = true;
 
   # Enable ZSH and set as default

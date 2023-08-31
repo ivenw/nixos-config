@@ -4,9 +4,16 @@
     "layer": "top",
     "position": "bottom",
 
-    "modules-left": ["wlr/workspaces"],
-    "modules-center": ["clock"],
-    "modules-right": ["group/utils", "group/system", "custom/power"],
+    "modules-left": [
+        "group/system"
+    ],
+    "modules-center": [
+        "wlr/workspaces",
+    ],
+    "modules-right": [
+        "group/utils",
+        "clock"
+    ],
     
     "group/utils": {
         "orientation": "horizontal",
@@ -25,19 +32,17 @@
             "3": [],
             "4": [],
         },
-        /*
         "format-icons": {
             "default": "○",
             "active": "●",
         }
-        */
     }, 
 
     "hyprland/window": { "max-length": 200, "separate-outputs": true },
 
     "clock": {
-        "format": "{:%a %H:%M %d-%m}",
-        "tooltip": false
+        "format": "{:%H:%M %a %d %b}",
+        "tooltip": true
     },
 
 
@@ -47,7 +52,11 @@
     },
     "cpu": {
         "interval": 5,
-        "format": " {usage:2}%"
+        "format": " {usage:2}%",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
     "disk": {
         "interval": 5,
@@ -57,7 +66,6 @@
 
     "pulseaudio": {
         "format": "{icon} {volume:2}%",
-        "format-bluetooth": "{icon}  {volume:2}%",
         "format-muted": "󰝟",
         "format-icons": {
             "default": ["", ""],
@@ -95,11 +103,11 @@
     },
     "battery": {
         "states": {
-            "good": 95,
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}  {capacity:3}%",
+        "format": "{icon}  {capacity:2}%",
+        "format-charging": " {capacity:2}%",
         "format-icons": ["", "", "", "", ""]
     },
 

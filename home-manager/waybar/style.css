@@ -17,7 +17,8 @@ window#waybar {
     color: @text;
     padding: 5px;
     margin: 0 5px 5px 5px;
-    border-radius: 15px;
+    /* just setting this way high to get a semi-circle */
+    border-radius: 100px;
 }
 
 #clock,
@@ -34,22 +35,41 @@ window#waybar {
 #workspaces button {
     padding: 0 2px;
     color: @subtext0;
+    transition-duration: 0s;
 }
 #workspaces button.active {
     color: @blue;
+}
+#workspaces button:hover {
+    background: None;
+    border: 1px solid @mantle;
+    box-shadow: None;
+    text-shadow: None;
 }
 
 #pulseaudio {
     /* color: @blue; */
 }
-#battery {
-    /* color: @yellow; */
+#bluetooth.connected {
+    color: @blue;
+}
+#bluetooth.disabled {
+    color: @subtext0;
+}
+#battery.warning {
+    color: @yellow;
+}
+#battery.critical {
+    color: @red;
 }
 #memory {
     /* color: @peach; */
 }
-#cpu {
-    /* color: @maroon; */
+#cpu.warning {
+    color: @yellow;
+}
+#cpu.critical {
+    color: @red;
 }
 #disk {
     /* color: @red; */
