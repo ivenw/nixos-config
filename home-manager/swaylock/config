@@ -1,3 +1,33 @@
-font="JetBrainsMono Nerd Font"
+ignore-empty-password
+disable-caps-lock-text
+
+indicator-radius=69
+indicator-thickness=20
 
 color=24273a
+image=~/Downloads/zen-garden.jpg
+
+key-hl-color=a6da95
+bs-hl-color=ed8796
+caps-lock-bs-hl-color=ed8796
+caps-lock-key-hl-color=ed8796
+
+ring-color=24273acc
+inside-color=24273acc
+
+ring-clear-color=eed49fcc
+inside-clear-color=24273acc
+
+ring-ver-color=8aadf4cc
+inside-ver-color=24273acc
+
+ring-wrong-color=ed8796cc
+inside-wrong-color=24273acc
+
+line-color=181926
+
+text-color=cad3f5
+text-clear-color=cad3f5
+text-ver-color=cad3f5
+text-wrong-color=cad3f5
+//font=JetBrainsMono Nerd Font

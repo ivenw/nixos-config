@@ -176,6 +176,7 @@
     dunst
     swww
     swaylock
+    swayidle
     catppuccin-cursors.macchiatoLight
   ];
 

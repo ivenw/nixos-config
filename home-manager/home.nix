@@ -7,6 +7,7 @@
     ./tmux
     ./hyprland
     ./waybar
+    ./swaylock
     ./zellij
     ./zsh.nix
   ];
