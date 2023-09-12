@@ -8,6 +8,7 @@
     ./hyprland
     ./waybar
     ./swaylock
+    ./swayidle
     ./zellij
     ./zsh.nix
   ];
@@ -45,6 +46,7 @@
     helix
     deno
     zoxide
+    mdbook
 
     # linters and formatters
     alejandra
@@ -60,9 +62,6 @@
     vial
     font-manager
     blueman
-
-    # volvo crap
-    citrix_workspace
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})

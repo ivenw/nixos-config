@@ -4,7 +4,15 @@ return {
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "lukas-reineke/indent-blankline.nvim", opts = {} },
 	{ "numToStr/Comment.nvim", opts = {} },
-	{ "nvim-lualine/lualine.nvim", opts = {} },
+	{
+		"nvim-lualine/lualine.nvim",
+		opts = {
+			options = {
+				section_separators = { left = "", right = "" },
+				component_separators = { left = "|", right = "|" },
+			},
+		},
+	},
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",

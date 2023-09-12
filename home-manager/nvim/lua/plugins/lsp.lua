@@ -10,14 +10,21 @@ return {
 				lsp.default_keymaps({ buffer = bufnr })
 			end)
 			lsp.extend_cmp()
-			-- (Optional) Configure lua language server for neovim
 			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+			require("lspconfig").rust_analyzer.setup({
+				on_init = function(client)
+					client.config.settings = {
+						["rust-analyzer"] = {
+							checkOnSave = {
+								command = "clippy",
+							},
+						},
+					}
+				end,
+			})
 
-			-- Replace the language servers listed here
-			-- with the ones installed in your system
 			lsp.setup_servers({
 				"nil_ls",
-				"rust_analyzer",
 				"ruff_lsp",
 				"pyright",
 				"efm",

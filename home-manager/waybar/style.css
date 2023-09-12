@@ -16,9 +16,12 @@ window#waybar {
     background: @mantle;
     color: @text;
     padding: 5px;
-    margin: 0 5px 5px 5px;
+    margin: 0 8px 8px 8px;
     /* just setting this way high to get a semi-circle */
     /* border-radius: 100px; */
+}
+#utils {
+    margin-right: 0px;
 }
 
 #clock,
@@ -34,7 +37,7 @@ window#waybar {
 
 #workspaces button {
     padding: 0 2px;
-    color: @subtext0;
+    color: @overlay2;
     transition-duration: 0s;
 }
 #workspaces button.active {

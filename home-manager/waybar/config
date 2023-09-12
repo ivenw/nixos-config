@@ -35,11 +35,7 @@
         "format-icons": {
             // "default": "○",
             // "active": "●",
-            // "default": "◇",
-            // "active": "◆"
-            "default": "□",
-            "active": "■"
-
+            "default": "■",
         }
     }, 
 
