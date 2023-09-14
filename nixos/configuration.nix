@@ -172,6 +172,7 @@
         mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
       })
     )
+    wev
     rofi-wayland
     dunst
     swww

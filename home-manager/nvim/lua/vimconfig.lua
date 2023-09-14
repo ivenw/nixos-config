@@ -39,4 +39,4 @@ opt.incsearch = true
 opt.scrolloff = 8
 
 -- shorten timeoutlen
-opt.timeoutlen = 100
+opt.timeoutlen = 500
