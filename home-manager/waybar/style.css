@@ -6,7 +6,7 @@
 }
 
 window#waybar {
-    background: rgba(0, 0, 0, 0);
+    background: @base;
 }
 
 #workspaces,
@@ -16,12 +16,8 @@ window#waybar {
     background: @mantle;
     color: @text;
     padding: 5px;
-    margin: 0 8px 8px 8px;
     /* just setting this way high to get a semi-circle */
     /* border-radius: 100px; */
-}
-#utils {
-    margin-right: 0px;
 }
 
 #clock,

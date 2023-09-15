@@ -34,7 +34,6 @@
     bat
     gh
     # azure-cli
-    exa
     fd
     fzf
     delta

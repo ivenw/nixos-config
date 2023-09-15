@@ -22,6 +22,9 @@
       # Rust
       # rust-analyzer
 
+      # zig
+      zls
+
       # Python
       nodePackages.pyright
       ruff-lsp

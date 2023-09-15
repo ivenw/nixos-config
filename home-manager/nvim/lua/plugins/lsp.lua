@@ -4,6 +4,7 @@ return {
 		branch = "dev-v3",
 		init = function()
 			local lsp = require("lsp-zero").preset({})
+			lsp.extend_lspconfig()
 			lsp.on_attach(function(client, bufnr)
 				-- see :help lsp-zero-keybindings
 				-- to learn the available actions
@@ -28,6 +29,7 @@ return {
 				"ruff_lsp",
 				"pyright",
 				"efm",
+				"zls",
 			})
 		end,
 	},
@@ -50,28 +52,37 @@ return {
 
 	-- Formatting
 	{
-		-- "creativenull/efmls-configs-nvim",
-		"ivenw/efmls-configs-nvim",
+		"creativenull/efmls-configs-nvim",
+		-- "ivenw/efmls-configs-nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
-			local efmls = require("efmls-configs")
 			local prettier = require("efmls-configs.formatters.prettier")
-			efmls.init({
-				-- Enable formatting provided by efm langserver
+			local lua = require("efmls-configs.formatters.stylua")
+			local python = require("efmls-configs.formatters.black")
+			local nix = require("efmls-configs.formatters.alejandra")
+			local rust = require("efmls-configs.formatters.rustfmt")
+			local languages = {
+				lua = { lua },
+				python = { python },
+				nix = { nix },
+				rust = { rust },
+				css = { prettier },
+				json = { prettier },
+				html = { prettier },
+				handlebars = { prettier },
+			}
+			local config = {
+				filetypes = vim.tbl_keys(languages),
+				settings = {
+					-- rootMarkers = { ".git/" },
+					languages = languages,
+				},
 				init_options = {
 					documentFormatting = true,
+					documentRangeFormatting = true,
 				},
-			})
-			efmls.setup({
-				lua = { formatter = require("efmls-configs.formatters.stylua") },
-				python = { formatter = require("efmls-configs.formatters.black") },
-				nix = { formatter = require("efmls-configs.formatters.alejandra") },
-				rust = { formatter = require("efmls-configs.formatters.rustfmt") },
-				css = { formatter = prettier },
-				json = { formatter = prettier },
-				html = { formatter = prettier },
-				handlebars = { formatter = prettier },
-			})
+			}
+			require("lspconfig").efm.setup(vim.tbl_extend("force", config, {}))
 		end,
 	},
 }
