@@ -46,6 +46,7 @@
     deno
     zoxide
     mdbook
+    unzip
 
     # linters and formatters
     alejandra
@@ -61,6 +62,7 @@
     vial
     font-manager
     blueman
+    gnome.nautilus
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})

@@ -173,6 +173,8 @@
       })
     )
     wev
+    wl-clipboard
+    wofi
     rofi-wayland
     dunst
     swww

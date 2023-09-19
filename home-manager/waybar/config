@@ -33,9 +33,9 @@
             "4": [],
         },
         "format-icons": {
-            // "default": "○",
-            // "active": "●",
-            "default": "■",
+            "default": "○",
+            "active": "●",
+            // "default": "■",
         }
     }, 
 

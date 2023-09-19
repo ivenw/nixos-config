@@ -6,7 +6,8 @@
 }
 
 window#waybar {
-    background: @base;
+    /* background: @base; */
+    background: alpha(@base, 0);
 }
 
 #workspaces,
@@ -15,9 +16,11 @@ window#waybar {
 #system {
     background: @mantle;
     color: @text;
-    padding: 5px;
+    padding: 2px;
     /* just setting this way high to get a semi-circle */
-    /* border-radius: 100px; */
+    border-radius: 25px;
+    margin-bottom: 2px;
+    margin-right: 4px;
 }
 
 #clock,
@@ -31,9 +34,16 @@ window#waybar {
     padding: 0 10px;
 }
 
+#system {
+    margin-left: 4px;
+}
+#clock {
+    margin-right: 4px;
+}
+
 #workspaces button {
     padding: 0 2px;
-    color: @overlay2;
+    color: @text;
     transition-duration: 0s;
 }
 #workspaces button.active {
