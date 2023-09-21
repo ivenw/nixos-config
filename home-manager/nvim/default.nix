@@ -19,8 +19,8 @@
       nil
       alejandra
 
-      # Rust
-      # rust-analyzer
+      # terraform
+      terraform-ls
 
       # zig
       zls

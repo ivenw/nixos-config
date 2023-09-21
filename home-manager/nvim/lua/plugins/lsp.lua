@@ -30,6 +30,7 @@ return {
 				"pyright",
 				"efm",
 				"zls",
+				"terraformls",
 			})
 		end,
 	},
@@ -61,6 +62,7 @@ return {
 			local python = require("efmls-configs.formatters.black")
 			local nix = require("efmls-configs.formatters.alejandra")
 			local rust = require("efmls-configs.formatters.rustfmt")
+			local terraform = require("efmls-configs.formatters.terraform_fmt")
 			local languages = {
 				lua = { lua },
 				python = { python },
@@ -70,6 +72,7 @@ return {
 				json = { prettier },
 				html = { prettier },
 				handlebars = { prettier },
+				terraform = { terraform },
 			}
 			local config = {
 				filetypes = vim.tbl_keys(languages),

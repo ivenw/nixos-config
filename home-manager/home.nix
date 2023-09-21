@@ -33,7 +33,8 @@
     atuin
     bat
     gh
-    # azure-cli
+    azure-cli
+    terraform
     fd
     fzf
     delta

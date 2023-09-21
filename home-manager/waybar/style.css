@@ -19,7 +19,7 @@ window#waybar {
     padding: 2px;
     /* just setting this way high to get a semi-circle */
     border-radius: 25px;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     margin-right: 4px;
 }
 
