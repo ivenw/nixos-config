@@ -30,6 +30,7 @@ return {
 				"pyright",
 				"efm",
 				"zls",
+				"gopls",
 				"terraformls",
 			})
 		end,
@@ -62,14 +63,19 @@ return {
 			local python = require("efmls-configs.formatters.black")
 			local nix = require("efmls-configs.formatters.alejandra")
 			local rust = require("efmls-configs.formatters.rustfmt")
+			local go = require("efmls-configs.formatters.gofmt")
 			local terraform = require("efmls-configs.formatters.terraform_fmt")
+			local yamllint = require("efmls-configs.linters.yamllint")
+
 			local languages = {
 				lua = { lua },
 				python = { python },
 				nix = { nix },
 				rust = { rust },
+				go = { go },
 				css = { prettier },
 				json = { prettier },
+				yaml = { yamllint, prettier },
 				html = { prettier },
 				handlebars = { prettier },
 				terraform = { terraform },

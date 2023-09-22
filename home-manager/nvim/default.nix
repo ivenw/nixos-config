@@ -25,6 +25,9 @@
       # zig
       zls
 
+      # go
+      gopls
+
       # Python
       nodePackages.pyright
       ruff-lsp
@@ -33,6 +36,9 @@
       # Lua
       lua-language-server
       stylua
+
+      # YAML
+      yamllint
 
       # Web
       nodePackages.prettier

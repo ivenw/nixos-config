@@ -70,6 +70,12 @@
           zig
         ];
       };
+      go = pkgs.mkShell {
+        name = "go";
+        packages = with pkgs; [
+          go
+        ];
+      };
     };
   };
 }
