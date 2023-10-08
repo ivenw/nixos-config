@@ -27,7 +27,10 @@ return {
 		"ggandor/leap.nvim",
 		dependencies = "tpope/vim-repeat",
 		config = function()
-			require("leap").add_default_mappings()
+			require("leap").setup({
+				vim.keymap.set({ "n", "x", "o" }, "f", "<Plug>(leap-forward-to)"),
+				vim.keymap.set({ "n", "x", "o" }, "F", "<Plug>(leap-backward-to)"),
+			})
 		end,
 	},
 	{
@@ -39,16 +42,16 @@ return {
 				require("mini.pairs").setup({})
 				require("mini.surround").setup({})
 				-- require("mini.jump2d").setup({})
-				local minimap = require("mini.map")
-				minimap.setup({
-					integrations = {
-						minimap.gen_integration.builtin_search(),
-						minimap.gen_integration.gitsigns(),
-						minimap.gen_integration.diagnostic(),
-					},
-					symbols = { encode = minimap.gen_encode_symbols.dot("3x2") },
-					window = { show_integration_count = false },
-				})
+				-- local minimap = require("mini.map")
+				-- minimap.setup({
+				-- 	integrations = {
+				-- 		minimap.gen_integration.builtin_search(),
+				-- 		minimap.gen_integration.gitsigns(),
+				-- 		minimap.gen_integration.diagnostic(),
+				-- 	},
+				-- 	symbols = { encode = minimap.gen_encode_symbols.dot("3x2") },
+				-- 	window = { show_integration_count = false },
+				-- })
 				local miniclue = require("mini.clue")
 				miniclue.setup({
 					triggers = {
