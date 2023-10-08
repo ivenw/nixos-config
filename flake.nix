@@ -58,6 +58,18 @@
           export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib"
         '';
       };
+      python311 = pkgs.mkShell {
+        name = "python311";
+        packages = with pkgs; [
+          python311
+          poetry
+          gcc
+          zlib
+        ];
+        shellHook = ''
+          export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib"
+        '';
+      };
       rust = pkgs.mkShell {
         name = "rust";
         packages = with pkgs; [

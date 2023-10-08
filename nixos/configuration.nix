@@ -162,6 +162,7 @@
     libsecret
     gnome.gnome-keyring
     git-credential-manager
+    tlp
 
     xterm
     firefox
