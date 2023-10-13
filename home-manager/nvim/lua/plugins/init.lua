@@ -3,7 +3,6 @@ return {
 
 	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{ "lukas-reineke/indent-blankline.nvim", opts = {} },
-	-- { "numToStr/Comment.nvim", opts = {} },
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
@@ -13,95 +12,40 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"windwp/nvim-autopairs",
-	-- 	event = "InsertEnter",
-	-- 	opts = {},
-	-- },
-	-- {
-	-- 	"m4xshen/hardtime.nvim",
-	-- 	dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	-- 	opts = {},
-	-- },
 	{
 		"ggandor/leap.nvim",
 		dependencies = "tpope/vim-repeat",
 		config = function()
+			local km = vim.keymap
 			require("leap").setup({
-				vim.keymap.set({ "n", "x", "o" }, "f", "<Plug>(leap-forward-to)"),
-				vim.keymap.set({ "n", "x", "o" }, "F", "<Plug>(leap-backward-to)"),
+				km.set({ "n", "x", "o" }, "f", "<Plug>(leap-forward-to)"),
+				km.set({ "n", "x", "o" }, "F", "<Plug>(leap-backward-to)"),
 			})
 		end,
 	},
 	{
-		{
-			"echasnovski/mini.nvim",
-			version = false,
-			config = function()
-				require("mini.comment").setup({})
-				require("mini.pairs").setup({})
-				require("mini.surround").setup({})
-				-- require("mini.jump2d").setup({})
-				-- local minimap = require("mini.map")
-				-- minimap.setup({
-				-- 	integrations = {
-				-- 		minimap.gen_integration.builtin_search(),
-				-- 		minimap.gen_integration.gitsigns(),
-				-- 		minimap.gen_integration.diagnostic(),
-				-- 	},
-				-- 	symbols = { encode = minimap.gen_encode_symbols.dot("3x2") },
-				-- 	window = { show_integration_count = false },
-				-- })
-				local miniclue = require("mini.clue")
-				miniclue.setup({
-					triggers = {
-						-- Leader triggers
-						{ mode = "n", keys = "<Leader>" },
-						{ mode = "x", keys = "<Leader>" },
-
-						-- Built-in completion
-						{ mode = "i", keys = "<C-x>" },
-
-						-- `g` key
-						{ mode = "n", keys = "g" },
-						{ mode = "x", keys = "g" },
-
-						-- 's' key
-						{ mode = "n", keys = "s" },
-						{ mode = "x", keys = "s" },
-
-						-- Marks
-						{ mode = "n", keys = "'" },
-						{ mode = "n", keys = "`" },
-						{ mode = "x", keys = "'" },
-						{ mode = "x", keys = "`" },
-
-						-- Registers
-						{ mode = "n", keys = '"' },
-						{ mode = "x", keys = '"' },
-						{ mode = "i", keys = "<C-r>" },
-						{ mode = "c", keys = "<C-r>" },
-
-						-- Window commands
-						{ mode = "n", keys = "<C-w>" },
-
-						-- `z` key
-						{ mode = "n", keys = "z" },
-						{ mode = "x", keys = "z" },
-					},
-
-					clues = {
-						-- Enhance this by adding descriptions for <Leader> mapping groups
-						miniclue.gen_clues.builtin_completion(),
-						miniclue.gen_clues.g(),
-						miniclue.gen_clues.marks(),
-						miniclue.gen_clues.registers(),
-						miniclue.gen_clues.windows(),
-						miniclue.gen_clues.z(),
-					},
-					window = { delay = 0, config = { width = "auto" } },
-				})
-			end,
-		},
+		"ThePrimeagen/harpoon",
+		dependencies = "nvim-lua/plenary.nvim",
+		config = function()
+			local km = vim.keymap
+			km.set("n", "<leader>hh", function()
+				require("harpoon.ui").toggle_quick_menu()
+			end, { desc = "Harpoon menu" })
+			km.set("n", "<leader>ha", function()
+				require("harpoon.mark").add_file()
+			end, { desc = "Add file to harpoon" })
+			km.set("n", "<leader>ht", function()
+				require("harpoon.ui").nav_file(1)
+			end, { desc = "Go to file #1" })
+			km.set("n", "<leader>hs", function()
+				require("harpoon.ui").nav_file(2)
+			end, { desc = "Go to file #2" })
+			km.set("n", "<leader>hr", function()
+				require("harpoon.ui").nav_file(3)
+			end, { desc = "Go to file #3" })
+			km.set("n", "<leader>ha", function()
+				require("harpoon.ui").nav_file(4)
+			end, { desc = "Go to file #4" })
+		end,
 	},
 }

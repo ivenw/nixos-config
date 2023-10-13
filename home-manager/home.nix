@@ -54,6 +54,7 @@
     stylua
     black
     ruff
+    sqlfluff
 
     # gui apps
     chromium
