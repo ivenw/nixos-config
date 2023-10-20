@@ -23,7 +23,7 @@
 
       # Delta
       core.pager = "delta";
-      interactive.diffFilter = "delta --color-only --theme=base16-256";
+      interactive.diffFilter = "delta --color-only";
       delta = {
         navigate = true;
         light = false;

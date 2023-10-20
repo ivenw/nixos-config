@@ -48,6 +48,7 @@
     zoxide
     mdbook
     unzip
+    yazi
 
     # linters and formatters
     alejandra
@@ -65,6 +66,7 @@
     font-manager
     blueman
     gnome.nautilus
+    networkmanagerapplet
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
