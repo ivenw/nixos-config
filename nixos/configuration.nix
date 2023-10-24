@@ -181,6 +181,7 @@
     swww
     swaylock
     swayidle
+    brightnessctl
     catppuccin-cursors.macchiatoLight
   ];
 
