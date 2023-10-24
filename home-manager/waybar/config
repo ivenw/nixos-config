@@ -17,7 +17,7 @@
     
     "group/utils": {
         "orientation": "horizontal",
-        "modules": ["pulseaudio", "bluetooth", "network", "battery"]
+        "modules": ["pulseaudio", "backlight", "bluetooth", "network", "battery"]
     },
     "group/system": {
         "orientation": "horizontal",
@@ -73,9 +73,14 @@
             "headphones": "",
             "bluetooth": ""
         },
-        "scroll-step": 5,
+        "scroll-step": 1,
         "on-click": "pamixer -t",
         "on-click-right": "pavucontrol"
+    },
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "{icon} {brightness:2}%",
+        "format-icons": ["󰃞", "󰃟", "󰃠"]
     },
     "bluetooth": {
 	    "format": "{icon}",
