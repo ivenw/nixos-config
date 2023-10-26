@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./alacritty
+    ./dunst
     ./nvim
     ./git.nix
     ./starship.nix
@@ -44,9 +45,9 @@
       name = "Catppuccin-Mocha-Dark-Cursors";
       package = pkgs.catppuccin-cursors.mochaDark;
     };
-    font = {
-      name = "JetBrainsMono Nerd Font";
-    };
+    # font = {
+    #   name = "JetBrainsMono Nerd Font";
+    # };
     gtk3.extraConfig = {
       Settings = ''
         gtk-application-prefer-dark-theme=1
