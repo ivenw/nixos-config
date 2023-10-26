@@ -28,6 +28,38 @@
 
   fonts.fontconfig.enable = true;
 
+  # home.nix
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Catppuccin-Mocha-Compact-Blue-Dark";
+      package = pkgs.catppuccin-gtk.override {
+        variant = "mocha";
+        accents = ["blue"];
+        size = "compact";
+        # tweaks = ["rimless" "black"];
+      };
+    };
+    cursorTheme = {
+      name = "Catppuccin-Mocha-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.mochaDark;
+    };
+    font = {
+      name = "JetBrainsMono Nerd Font";
+    };
+    gtk3.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk4.extraConfig = {
+      Settings = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+  };
+
   home.packages = with pkgs; [
     # cli and tui apps
     atuin

@@ -52,7 +52,6 @@ window#waybar {
 }
 #workspaces button:hover {
     background: None;
-    border: 1px solid @mantle;
     box-shadow: None;
     text-shadow: None;
 }

@@ -168,22 +168,15 @@
     firefox
 
     # Hyprland related
-    # (
-    #   waybar.overrideAttrs (oldAttrs: {
-    #     mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-    #   })
-    # )
     waybar
     wev
     wl-clipboard
     wofi
-    rofi-wayland
     dunst
     swww
     swaylock
     swayidle
     brightnessctl
-    catppuccin-cursors.macchiatoLight
   ];
 
   security.pam.services.swaylock = {
