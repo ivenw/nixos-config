@@ -168,11 +168,12 @@
     firefox
 
     # Hyprland related
-    (
-      waybar.overrideAttrs (oldAttrs: {
-        mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
-      })
-    )
+    # (
+    #   waybar.overrideAttrs (oldAttrs: {
+    #     mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+    #   })
+    # )
+    waybar
     wev
     wl-clipboard
     wofi

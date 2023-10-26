@@ -4,7 +4,7 @@
     shellAliases = {
       rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
       update = "home-manager switch --flake ~/nixos-config";
-      cleanup = "sudo nix profile wipe-history && sudo nix store gc";
+      cleanup = "sudo nix-garbage-collect --delete-older-than 30d";
       nd = "mkdir -pv";
       nf = "touch";
       deldir = "rm -rIv";

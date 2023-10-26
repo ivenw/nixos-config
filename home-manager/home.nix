@@ -61,7 +61,6 @@
     chromium
     _1password-gui
     obsidian
-    vscode
     vial
     font-manager
     blueman
