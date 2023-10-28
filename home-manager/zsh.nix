@@ -3,7 +3,8 @@
     enable = true;
     shellAliases = {
       # nixos
-      rebuild = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      rebuild-switch = "sudo nixos-rebuild switch --flake ~/nixos-config";
+      rebuild-reboot = "sudo nixos-rebuild boot --flake ~/nixos-config && systemctl reboot";
       update = "home-manager switch --flake ~/nixos-config";
       cleanup = "sudo nix-store --gc && nix-env --delete-generations +1";
 

@@ -50,6 +50,12 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
+
+  # Keyring
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.gdm.enableGnomeKeyring = true;
+  programs.seahorse.enable = true;
+
   # services.xserver.desktopManager.gnome.enable = true;
   # environment.gnome.excludePackages =
   #   (with pkgs; [
@@ -159,8 +165,8 @@
     vim
     home-manager
     git
-    libsecret
-    gnome.gnome-keyring
+    # libsecret
+    # gnome.gnome-keyring
     git-credential-manager
     tlp
 
@@ -184,7 +190,6 @@
       auth include login
     '';
   };
-  programs.seahorse.enable = true;
 
   # Enable ZSH and set as default
   programs.zsh.enable = true;
