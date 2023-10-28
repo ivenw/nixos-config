@@ -68,6 +68,7 @@
     gh
     azure-cli
     terraform
+    terramate
     fd
     fzf
     delta
