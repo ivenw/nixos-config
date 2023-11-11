@@ -13,6 +13,7 @@
     };
     extraConfig = {
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
 
       # GCM
       credential = {

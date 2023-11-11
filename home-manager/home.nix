@@ -8,6 +8,7 @@
     ./tmux
     ./hyprland
     ./waybar
+    ./wezterm
     ./swaylock
     ./swayidle
     ./zellij
@@ -69,6 +70,8 @@
     azure-cli
     terraform
     terramate
+    pulumi
+    pulumiPackages.pulumi-language-nodejs
     fd
     fzf
     delta
@@ -93,6 +96,7 @@
 
     # gui apps
     chromium
+    discord
     _1password-gui
     obsidian
     vial

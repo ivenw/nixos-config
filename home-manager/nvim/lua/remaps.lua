@@ -28,6 +28,17 @@ km.set("n", "<leader>px", ":close<CR>", { desc = "Close pane" })
 -- km.set("n", "K", ":tabnext<CR>")
 -- km.set("n", "J", ":tabpreviors<CR>")
 
+-- rename
+km.set("n", "<leader>R", function()
+	local current_word = vim.fn.expand("<cword>")
+	vim.ui.input({ prompt = "Replace: ", default = current_word }, function(input)
+		if input == nil then
+			return
+		end
+		vim.cmd("%s/" .. current_word .. "/" .. input .. "/g")
+	end)
+end)
+
 -- LSP
 km.set("n", "<leader>i", vim.lsp.buf.hover, { desc = "Symbol info" })
 km.set("n", "<leader>r", vim.lsp.buf.rename, { desc = "Rename symbol" })
