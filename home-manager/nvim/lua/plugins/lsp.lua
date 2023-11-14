@@ -32,6 +32,7 @@ return {
 				"zls",
 				"gopls",
 				"terraformls",
+				"tflint",
 			})
 		end,
 	},
@@ -65,6 +66,7 @@ return {
 			local rustfmt = require("efmls-configs.formatters.rustfmt")
 			local gofmt = require("efmls-configs.formatters.gofmt")
 			local terraformfmt = require("efmls-configs.formatters.terraform_fmt")
+			-- local tflint = require("efmls-configs.linters.tflint")
 			local yamllint = require("efmls-configs.linters.yamllint")
 
 			local languages = {

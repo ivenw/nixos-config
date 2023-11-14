@@ -5,6 +5,7 @@
 }: {
   programs.neovim = {
     enable = true;
+    defaultNvimrc = true;
     viAlias = true;
     extraPackages = with pkgs; [
       # treesitter
@@ -21,6 +22,7 @@
 
       # terraform
       terraform-ls
+      tflint
 
       # zig
       zls

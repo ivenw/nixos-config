@@ -8,7 +8,6 @@
     ./tmux
     ./hyprland
     ./waybar
-    ./wezterm
     ./swaylock
     ./swayidle
     ./zellij
