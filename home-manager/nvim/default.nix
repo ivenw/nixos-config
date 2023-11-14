@@ -5,7 +5,7 @@
 }: {
   programs.neovim = {
     enable = true;
-    defaultNvimrc = true;
+    defaultEditor = true;
     viAlias = true;
     extraPackages = with pkgs; [
       # treesitter
