@@ -37,7 +37,7 @@ km.set("n", "<leader>R", function()
 		end
 		vim.cmd("%s/" .. current_word .. "/" .. input .. "/g")
 	end)
-end)
+end, { desc = "Find and replace symbol" })
 
 -- LSP
 km.set("n", "<leader>i", vim.lsp.buf.hover, { desc = "Symbol info" })
