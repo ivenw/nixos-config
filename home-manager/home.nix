@@ -25,6 +25,7 @@
   home = {
     username = "ivenw";
     homeDirectory = "/home/ivenw";
+    sessionPath = ["$HOME/.local/bin"];
   };
 
   fonts.fontconfig.enable = true;
@@ -48,11 +49,11 @@
     # font = {
     #   name = "JetBrainsMono Nerd Font";
     # };
-    gtk3.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
+    # gtk3.extraConfig = {
+    #   Settings = ''
+    #     gtk-application-prefer-dark-theme=1
+    #   '';
+    # };
 
     gtk4.extraConfig = {
       Settings = ''
@@ -67,10 +68,9 @@
     bat
     gh
     azure-cli
+    pipx
     terraform
     terramate
-    pulumi
-    pulumiPackages.pulumi-language-nodejs
     fd
     fzf
     delta

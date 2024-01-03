@@ -178,6 +178,7 @@
     wev
     wl-clipboard
     wofi
+    rofi
     dunst
     swww
     swaylock

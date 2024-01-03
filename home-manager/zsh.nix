@@ -6,7 +6,8 @@
       rebuild-switch = "sudo nixos-rebuild switch --flake ~/nixos-config";
       rebuild-reboot = "sudo nixos-rebuild boot --flake ~/nixos-config && systemctl reboot";
       update = "home-manager switch --flake ~/nixos-config";
-      cleanup = "nix-env --delete-generations +1 && sudo nix-collect-garbage -d";
+      switch-to-configuration = "sudo /nix/var/nix/profiles/system/bin/switch-to-configuration switch";
+      cleanup = "nix-env --delete-generations +1 && switch-to-configuration && sudo nix-collect-garbage -d";
 
       # config
       config-nix = "cd ~/nixos-config && nvim";
