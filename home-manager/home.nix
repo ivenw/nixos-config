@@ -97,7 +97,6 @@
     chromium
     discord
     _1password-gui
-    obsidian
     vial
     font-manager
     blueman
