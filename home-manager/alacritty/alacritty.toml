@@ -1,0 +1,11 @@
+import = [
+  "~/.config/alacritty/themes/catppuccin-frappe.toml"
+]
+
+[font]
+normal.family = "JetBrainsMono Nerd Font"
+size = 14.0
+
+[window]
+padding.x = 5
+padding.y = 5

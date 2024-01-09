@@ -1,5 +1,5 @@
 // Choose the theme that is specified in the themes section.zel
-theme "catppuccin-macchiato"
+theme "catppuccin-frappe"
 
 // Choose default layout for a new tab
 default_layout "top-status-bar"
