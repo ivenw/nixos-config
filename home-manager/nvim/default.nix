@@ -33,8 +33,6 @@
       # Python
       nodePackages.pyright
       ruff-lsp
-      black
-      pylint
 
       # Lua
       lua-language-server

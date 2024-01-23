@@ -89,9 +89,8 @@
     # linters and formatters
     alejandra
     stylua
-    black
-    ruff
     sqlfluff
+    ruff
 
     # gui apps
     chromium
@@ -102,6 +101,7 @@
     blueman
     gnome.nautilus
     networkmanagerapplet
+    meld
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})

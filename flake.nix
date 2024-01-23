@@ -46,10 +46,10 @@
     };
 
     devShells."${system}" = {
-      python310 = pkgs.mkShell {
-        name = "python310";
+      python312 = pkgs.mkShell {
+        name = "python312";
         packages = with pkgs; [
-          python310
+          python312
           poetry
           gcc
           zlib
