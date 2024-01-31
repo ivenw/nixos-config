@@ -55,8 +55,8 @@ return {
 
 	-- Formatting
 	{
-		-- "creativenull/efmls-configs-nvim",
-		"ivenw/efmls-configs-nvim",
+		"creativenull/efmls-configs-nvim",
+		-- "ivenw/efmls-configs-nvim",
 		dependencies = { "neovim/nvim-lspconfig" },
 		config = function()
 			local prettier = require("efmls-configs.formatters.prettier")
@@ -67,13 +67,13 @@ return {
 			local rustfmt = require("efmls-configs.formatters.rustfmt")
 			local gofmt = require("efmls-configs.formatters.gofmt")
 			local terraformfmt = require("efmls-configs.formatters.terraform_fmt")
-			local terramatefmt = require("efmls-configs.formatters.terramate_fmt")
+			-- local terramatefmt = require("efmls-configs.formatters.terramate_fmt")
 			local yamllint = require("efmls-configs.linters.yamllint")
 
 			local languages = {
 				lua = { stylua },
 				-- python = { black },
-				-- python = { ruff },
+				python = { ruff },
 				nix = { alejandra },
 				rust = { rustfmt },
 				go = { gofmt },
@@ -83,7 +83,7 @@ return {
 				html = { prettier },
 				handlebars = { prettier },
 				terraform = { terraformfmt },
-				hcl = { terramatefmt },
+				-- hcl = { terramatefmt },
 			}
 			local config = {
 				filetypes = vim.tbl_keys(languages),
