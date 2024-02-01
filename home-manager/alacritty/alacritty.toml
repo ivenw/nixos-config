@@ -8,5 +8,6 @@ size = 10.0
 
 [window]
 decorations = "None"
+startup_mode = "Maximized"
 padding.x = 5
 padding.y = 5
