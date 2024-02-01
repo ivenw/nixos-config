@@ -1,15 +1,16 @@
 {pkgs, ...}: {
   imports = [
     ./alacritty
-    ./dunst
+    # ./dunst
     ./nvim
     ./git.nix
+    ./gtk.nix
     ./starship.nix
     ./tmux
-    ./hyprland
-    ./waybar
-    ./swaylock
-    ./swayidle
+    # ./hyprland
+    # ./waybar
+    # ./swaylock
+    # ./swayidle
     ./zellij
     ./zsh.nix
   ];
@@ -30,38 +31,6 @@
 
   fonts.fontconfig.enable = true;
 
-  # home.nix
-  gtk = {
-    enable = true;
-    theme = {
-      name = "Catppuccin-Mocha-Compact-Blue-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        variant = "mocha";
-        accents = ["blue"];
-        size = "compact";
-        # tweaks = ["rimless" "black"];
-      };
-    };
-    cursorTheme = {
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
-    };
-    # font = {
-    #   name = "JetBrainsMono Nerd Font";
-    # };
-    # gtk3.extraConfig = {
-    #   Settings = ''
-    #     gtk-application-prefer-dark-theme=1
-    #   '';
-    # };
-
-    gtk4.extraConfig = {
-      Settings = ''
-        gtk-application-prefer-dark-theme=1
-      '';
-    };
-  };
-
   home.packages = with pkgs; [
     # cli and tui apps
     atuin
@@ -77,10 +46,7 @@
     tokei
     ripgrep
     tree
-    lf
-    nnn
     helix
-    deno
     zoxide
     mdbook
     unzip
@@ -96,12 +62,11 @@
     chromium
     discord
     _1password-gui
-    vial
+    # vial
     font-manager
-    blueman
-    gnome.nautilus
-    networkmanagerapplet
-    meld
+    # blueman
+    # gnome.nautilus
+    # networkmanagerapplet
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})

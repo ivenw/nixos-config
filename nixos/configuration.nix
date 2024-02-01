@@ -3,15 +3,21 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
   inputs,
-  lib,
-  config,
   pkgs,
   ...
 }: {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    inputs.home-manager.nixosModules.default
   ];
+
+  nix = {
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      auto-optimise-store = true;
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -34,15 +40,15 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "sv_SE.UTF-8";
-    LC_IDENTIFICATION = "sv_SE.UTF-8";
-    LC_MEASUREMENT = "sv_SE.UTF-8";
-    LC_MONETARY = "sv_SE.UTF-8";
-    LC_NAME = "sv_SE.UTF-8";
-    LC_NUMERIC = "sv_SE.UTF-8";
-    LC_PAPER = "sv_SE.UTF-8";
-    LC_TELEPHONE = "sv_SE.UTF-8";
-    LC_TIME = "sv_SE.UTF-8";
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
   };
 
   # Enable the X11 windowing system.
@@ -50,54 +56,35 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-
-  # Keyring
-  services.gnome.gnome-keyring.enable = true;
-  security.pam.services.gdm.enableGnomeKeyring = true;
-  programs.seahorse.enable = true;
-
-  # services.xserver.desktopManager.gnome.enable = true;
-  # environment.gnome.excludePackages =
-  #   (with pkgs; [
-  #     gnome-photos
-  #     gnome-to r
-  #   ])
-  #   ++ (with pkgs.gnome; [
-  #     cheese # webcam tool
-  #     gnome-music
-  #     gnome-terminal
-  #     gedit # text editor
-  #     epiphany # web browser
-  #     geary # email reader
-  #     evince # document viewer
-  #     totem # video player
-  #     tali # poker game
-  #     iagno # go game
-  #     hitori # sudoku game
-  #     atomix # puzzle game
-  #   ]);
-
-  # Enable Hyprland Window Manager and apply related configs
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-  };
-  hardware.bluetooth.enable = true;
-  hardware.opengl.enable = true;
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  services.xserver.desktopManager.gnome.enable = true;
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+      gnome-connections
+    ])
+    ++ (with pkgs.gnome; [
+      simple-scan
+      cheese # webcam tool
+      gnome-music
+      epiphany # web browser
+      geary # email reader
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      gnome-maps
+      gnome-clocks
+      gnome-calendar
+      gnome-weather
+      gnome-contacts
+    ]);
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "colemak_dh_iso";
   };
-
-  # Enable Docker
-  virtualisation.docker.enable = true;
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -111,7 +98,7 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
+    # If you want to use JACK applications, uncomme nt this
     #jack.enable = true;
 
     # use the example session manager (no others are packaged yet so this is enabled by default,
@@ -122,79 +109,42 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  nix = {
-    # This will add each flake input as a registry
-    # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
-
-    # This will additionally add your inputs to the system's legacy channels
-    # Making legacy nix commands consistent as well, awesome!
-    nixPath = lib.mapAttrsToList (key: value: "${key}=${value.to.path}") config.nix.registry;
-
-    settings = {
-      # Enable flakes and new 'nix' command
-      experimental-features = "nix-command flakes";
-      # Deduplicate and optimize nix store
-      auto-optimise-store = true;
-    };
-  };
-
-  # Enable Vial support
-  services.udev.extraRules = ''
-    KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{serial}=="*vial:f64c2b3c*", MODE="0660", GROUP="users", TAG+="uaccess", TAG+="udev-acl"
-  '';
+  # Enable Docker
+  virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ivenw = {
     isNormalUser = true;
     description = "Iven Winkelmann";
-    extraGroups = ["networkmanager" "wheel" "docker"];
-    packages = with pkgs; [
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "docker"
     ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    # Essentials
-    wget
-    curl
-    vim
-    home-manager
-    git
-    # libsecret
-    # gnome.gnome-keyring
-    git-credential-manager
-    tlp
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
-    xterm
-    firefox
-
-    # Hyprland related
-    waybar
-    wev
-    wl-clipboard
-    wofi
-    rofi
-    dunst
-    swww
-    swaylock
-    swayidle
-    brightnessctl
-  ];
-
-  security.pam.services.swaylock = {
-    text = ''
-      auth include login
-    '';
-  };
-
-  # Enable ZSH and set as default
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
+
+  programs.steam = {
+    enable = true;
+  };
+
+  environment.systemPackages =
+    (with pkgs; [
+      home-manager
+      wget
+      curl
+      git
+      git-credential-manager
+      firefox
+    ])
+    ++ (with pkgs.gnomeExtensions; [
+      just-perfection
+    ]);
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -221,5 +171,5 @@
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.11"; # Did you read the comment?
 }

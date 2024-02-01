@@ -4,8 +4,9 @@ import = [
 
 [font]
 normal.family = "JetBrainsMono Nerd Font"
-size = 12.0
+size = 10.0
 
 [window]
+decorations = "None"
 padding.x = 5
 padding.y = 5
