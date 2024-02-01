@@ -4,7 +4,7 @@
     # ./dunst
     ./nvim
     ./git.nix
-    ./gtk.nix
+    ./gnome.nix
     ./starship.nix
     ./tmux
     # ./hyprland
