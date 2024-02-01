@@ -48,7 +48,7 @@
     "org/gnome/system/location" = {
       enabled = true;
     };
-    "org/gnome/shell/".enabled-extensions = [
+    "org/gnome/shell".enabled-extensions = [
       "just-perfection-desktop@just-perfection"
     ];
     "org/gnome/shell/extensions/just-perfection" = {
