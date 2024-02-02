@@ -131,7 +131,9 @@
 
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = true;
   };
+  programs.gamemode.enable = true;
 
   environment.systemPackages =
     (with pkgs; [
@@ -141,6 +143,7 @@
       git
       git-credential-manager
       firefox
+      glxinfo
     ])
     ++ (with pkgs.gnomeExtensions; [
       just-perfection
