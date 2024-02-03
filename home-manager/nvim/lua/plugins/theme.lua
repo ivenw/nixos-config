@@ -5,7 +5,8 @@ return {
 		priority = 1000,
 		config = function()
 			require("catppuccin").setup({
-				flavour = "frappe",
+				-- flavour = "frappe",
+				flavour = "macchiato",
 				styles = {
 					loops = { "italic" },
 					keywords = { "italic" },

@@ -2,20 +2,25 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Mocha-Compact-Blue-Dark";
+      name = "Catppuccin-Macchiato-Compact-Flamingo-Dark";
       package = pkgs.catppuccin-gtk.override {
-        variant = "mocha";
-        accents = ["blue"];
+        # variant = "mocha";
+        variant = "macchiato";
+        # accents = ["blue"];
+        accents = ["flamingo"];
         size = "compact";
         tweaks = [
           "rimless"
           # "black"
+          # "float"
         ];
       };
     };
     cursorTheme = {
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      package = pkgs.catppuccin-cursors.mochaDark;
+      # name = "Catppuccin-Mocha-Dark-Cursors";
+      # package = pkgs.catppuccin-cursors.mochaDark;
+      name = "Catppuccin-Macchiato-Dark-Cursors";
+      package = pkgs.catppuccin-cursors.macchiatoDark;
     };
     # font = {
     #   name = "JetBrainsMono Nerd Font";
@@ -23,8 +28,10 @@
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "blue";
+        # flavor = "mocha";
+        flavor = "macchiato";
+        # accent = "blue";
+        accent = "flamingo";
       };
     };
     gtk3.extraConfig = {
@@ -38,6 +45,7 @@
       '';
     };
   };
+  home.sessionVariables.GTK_THEME = "Catppuccin-Macchiato-Compact-Flamingo-dark";
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -56,6 +64,7 @@
       enabled = true;
     };
     "org/gnome/shell".enabled-extensions = [
+      "user-theme@gnome-shell-extensions.gcampax.github.com"
       "just-perfection-desktop@just-perfection"
     ];
     "org/gnome/shell/extensions/just-perfection" = {
