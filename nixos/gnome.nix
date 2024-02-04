@@ -23,7 +23,7 @@
       gnome-weather
       gnome-contacts
     ]);
-  environment.gnome.systemPackages = with pkgs.gnomeExtensions; [
+  environment.systemPackages = with pkgs.gnomeExtensions; [
     just-perfection
   ];
 }

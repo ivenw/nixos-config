@@ -9,6 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./gnome.nix
     ./steam.nix
     inputs.home-manager.nixosModules.default
   ];
@@ -57,9 +58,9 @@
   services.xserver.enable = true;
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "colemak_dh_iso";
+    variant = "colemak_dh_iso";
   };
 
   # Enable sound with pipewire.
