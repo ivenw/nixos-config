@@ -9,6 +9,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./steam.nix
     inputs.home-manager.nixosModules.default
   ];
 
@@ -33,12 +34,13 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Set your time zone.
+  # Power management
+  services.thermald.enable = true;
+
   time.timeZone = "Europe/Stockholm";
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -51,43 +53,14 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
+  # Enable X11
   services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-  environment.gnome.excludePackages =
-    (with pkgs; [
-      gnome-photos
-      gnome-tour
-      gnome-connections
-    ])
-    ++ (with pkgs.gnome; [
-      simple-scan
-      cheese # webcam tool
-      gnome-music
-      epiphany # web browser
-      geary # email reader
-      tali # poker game
-      iagno # go game
-      hitori # sudoku game
-      atomix # puzzle game
-      gnome-maps
-      gnome-clocks
-      gnome-calendar
-      gnome-weather
-      gnome-contacts
-    ]);
 
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
     xkbVariant = "colemak_dh_iso";
   };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -105,6 +78,9 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+
+  # Enable CUPS to print documents.
+  services.printing.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -126,28 +102,19 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # Enable ZSh and set as default
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
-  programs.steam = {
-    enable = true;
-    gamescopeSession.enable = true;
-  };
-  programs.gamemode.enable = true;
-
-  environment.systemPackages =
-    (with pkgs; [
-      home-manager
-      wget
-      curl
-      git
-      git-credential-manager
-      firefox
-      glxinfo
-    ])
-    ++ (with pkgs.gnomeExtensions; [
-      just-perfection
-    ]);
+  environment.systemPackages = with pkgs; [
+    home-manager
+    wget
+    curl
+    git
+    git-credential-manager
+    glxinfo
+    firefox
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
