@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    # ./alacritty
+    ./alacritty
     # ./dunst
     ./nvim
     ./git.nix

@@ -78,6 +78,9 @@
       animation = 5;
       notification-banner-position = 5;
     };
+    "org/gnome/shell/keybindings" = {
+      toggle-overview = ["<Super>space"];
+    };
     "org/gnome/desktop/wm/keybindings" = {
       toggle-overview = ["<Super>space"];
       switch-to-workspace-1 = ["<Super>1"];
