@@ -7,7 +7,7 @@
     ./gnome.nix
     ./starship.nix
     # ./tmux
-    ./wezterm
+    # ./wezterm
     # ./hyprland
     # ./waybar
     # ./swaylock
