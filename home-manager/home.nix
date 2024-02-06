@@ -1,12 +1,13 @@
 {pkgs, ...}: {
   imports = [
-    ./alacritty
+    # ./alacritty
     # ./dunst
     ./nvim
     ./git.nix
     ./gnome.nix
     ./starship.nix
-    ./tmux
+    # ./tmux
+    ./wezterm
     # ./hyprland
     # ./waybar
     # ./swaylock
