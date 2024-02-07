@@ -1,13 +1,17 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  catppuccin = {
+    name = "Catppuccin-Macchiato-Compact-Flamingo-Dark";
+    variant = "macchiato";
+    accent = "flamingo";
+  };
+in {
   gtk = {
     enable = true;
     theme = {
-      name = "Catppuccin-Macchiato-Compact-Flamingo-Dark";
+      name = catppuccin.name;
       package = pkgs.catppuccin-gtk.override {
-        # variant = "mocha";
-        variant = "macchiato";
-        # accents = ["blue"];
-        accents = ["flamingo"];
+        variant = catppuccin.variant;
+        accents = [catppuccin.accent];
         size = "compact";
         tweaks = [
           "rimless"
@@ -17,21 +21,14 @@
       };
     };
     cursorTheme = {
-      # name = "Catppuccin-Mocha-Dark-Cursors";
-      # package = pkgs.catppuccin-cursors.mochaDark;
       name = "Catppuccin-Macchiato-Dark-Cursors";
       package = pkgs.catppuccin-cursors.macchiatoDark;
     };
-    # font = {
-    #   name = "JetBrainsMono Nerd Font";
-    # };
     iconTheme = {
       name = "Papirus-Dark";
       package = pkgs.catppuccin-papirus-folders.override {
-        # flavor = "mocha";
-        flavor = "macchiato";
-        # accent = "blue";
-        accent = "flamingo";
+        flavor = catppuccin.variant;
+        accent = catppuccin.accent;
       };
     };
     gtk3.extraConfig = {
@@ -45,7 +42,7 @@
       '';
     };
   };
-  home.sessionVariables.GTK_THEME = "Catppuccin-Macchiato-Compact-Flamingo-dark";
+  # home.sessionVariables.GTK_THEME = "Catppuccin-Macchiato-Compact-Flamingo-dark";
 
   dconf.settings = {
     "org/gnome/desktop/interface" = {
@@ -59,14 +56,17 @@
     };
     "org/gnome/mutter" = {
       edge-tiling = true;
+      workspaces-only-on-primary = true;
     };
     "org/gnome/system/location" = {
       enabled = true;
     };
+    "org/gnome/shell".disabled-extensions = [];
     "org/gnome/shell".enabled-extensions = [
       "user-theme@gnome-shell-extensions.gcampax.github.com"
       "just-perfection-desktop@just-perfection"
     ];
+    "org/gnome/shell/user-theme".name = catppuccin.name;
     "org/gnome/shell/extensions/just-perfection" = {
       theme = true;
       dash = false;

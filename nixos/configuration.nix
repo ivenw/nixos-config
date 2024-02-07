@@ -106,9 +106,6 @@
   # Enable ZSh and set as default
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
-  environment.variables = {
-    SHELL = "/bin/zsh";
-  };
 
   environment.systemPackages = with pkgs; [
     home-manager

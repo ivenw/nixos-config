@@ -1,19 +1,22 @@
 {pkgs, ...}: {
   imports = [
-    ./alacritty
-    # ./dunst
-    ./nvim
     ./git.nix
-    ./gnome.nix
+    ./nvim
+    ./zsh.nix
     ./starship.nix
+    ./zellij
     # ./tmux
+    ./alacritty
     ./wezterm
+
+    ./gnome.nix
+
+    # Hyperland
     # ./hyprland
     # ./waybar
+    # ./dunst
     # ./swaylock
     # ./swayidle
-    ./zellij
-    ./zsh.nix
   ];
 
   nixpkgs = {
@@ -65,9 +68,6 @@
     _1password-gui
     # vial
     font-manager
-    # blueman
-    # gnome.nautilus
-    # networkmanagerapplet
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
