@@ -1,10 +1,11 @@
-{...}: {
+{config, ...}: {
   programs.zellij = {
     enable = true;
   };
 
-  xdg.configFile.zellij = {
-    source = ./.;
-    recursive = true;
+  xdg.configFile."zellij" = {
+    source =
+      config.lib.file.mkOutOfStoreSymlink
+      "${config.home.homeDirectory}/nixos-config/home-manager/zellij";
   };
 }

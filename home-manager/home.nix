@@ -5,7 +5,7 @@
     ./zsh.nix
     ./starship.nix
     ./zellij
-    # ./tmux
+    ./tmux
     ./alacritty
     ./wezterm
 
@@ -61,6 +61,7 @@
     stylua
     sqlfluff
     ruff
+    yamllint
 
     # gui apps
     chromium

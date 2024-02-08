@@ -61,22 +61,8 @@ in {
     "org/gnome/system/location" = {
       enabled = true;
     };
-    "org/gnome/shell".disabled-extensions = [];
-    "org/gnome/shell".enabled-extensions = [
-      "user-theme@gnome-shell-extensions.gcampax.github.com"
-      "just-perfection-desktop@just-perfection"
-    ];
-    "org/gnome/shell/user-theme".name = catppuccin.name;
-    "org/gnome/shell/extensions/just-perfection" = {
-      theme = true;
-      dash = false;
-      workspace = false;
-      overlay-key = false;
-      top-panel-position = 1;
-      clock-menu-position = 1;
-      clock-menu-position-offset = 6;
-      animation = 5;
-      notification-banner-position = 5;
+    "org/gnome/desktop/wm/preferences" = {
+      num-workspaces = 4;
     };
     "org/gnome/shell/keybindings" = {
       toggle-overview = ["<Super>space"];
@@ -93,6 +79,26 @@ in {
       move-to-workspace-4 = ["<Shift><Super>4"];
       switch-input-source = ["F2"];
       toggle-fullscreen = ["<Super>f"];
+    };
+
+    "org/gnome/shell" = {
+      disabled-extensions = [];
+      enabled-extensions = [
+        "user-theme@gnome-shell-extensions.gcampax.github.com"
+        "just-perfection-desktop@just-perfection"
+      ];
+    };
+    "org/gnome/shell/user-theme".name = catppuccin.name;
+    "org/gnome/shell/extensions/just-perfection" = {
+      theme = true;
+      dash = false;
+      workspace = false;
+      overlay-key = false;
+      top-panel-position = 1;
+      clock-menu-position = 1;
+      clock-menu-position-offset = 6;
+      animation = 5;
+      notification-banner-position = 5;
     };
   };
 }
