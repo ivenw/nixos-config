@@ -37,6 +37,7 @@
     features = "catppuccin-frappe"
 	light = false
 	navigate = true
+    side-by-side  = true
 
 [diff]
     colorMoved = default
