@@ -1,0 +1,45 @@
+[include]
+	path = "/home/ivenw/.config/git/delta/themes/frappe.gitconfig"
+
+[user]
+	email = "winkelmann.iven@gmail.com"
+	name = "Iven Winkelmann"
+
+[alias]
+	aa = "add -A"
+	c = "commit -m"
+	ca = "commit -am"
+	co = "checkout"
+	d = "diff"
+	prune = "remote prune origin"
+	s = "status"
+
+[init]
+	defaultBranch = "main"
+
+[push]
+	autoSetupRemote = true
+
+[interactive]
+	diffFilter = "delta --color-only"
+
+[core]
+	pager = "delta"
+
+[credential]
+	credentialStore = "secretservice"
+	helper = "/run/current-system/sw/bin/git-credential-manager"
+
+[credential "dev.azure.com"]
+	useHttpPath = true
+
+[delta]
+    features = "catppuccin-frappe"
+	light = false
+	navigate = true
+
+[diff]
+    colorMoved = default
+
+[merge]
+	conflictstyle = "diff3"

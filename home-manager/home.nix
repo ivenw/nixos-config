@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    ./git.nix
+    ./git
+    ./bat.nix
     ./nvim
     ./zsh.nix
     ./starship.nix
