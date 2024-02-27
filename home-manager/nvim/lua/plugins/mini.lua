@@ -17,6 +17,9 @@ return {
 			-- 	symbols = { encode = minimap.gen_encode_symbols.dot("3x2") },
 			-- 	window = { show_integration_count = false },
 			-- })
+			local minifiles = require("mini.files")
+			minifiles.setup({})
+			vim.keymap.set("n", "<leader>tf", minifiles.open, { desc = "File browser" })
 			local miniclue = require("mini.clue")
 			miniclue.setup({
 				triggers = {

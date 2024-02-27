@@ -56,6 +56,7 @@
     mdbook
     unzip
     yazi
+    cloc
 
     # linters and formatters
     alejandra
