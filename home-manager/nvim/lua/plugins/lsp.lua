@@ -1,11 +1,14 @@
 return {
 	{
 		"VonHeikemen/lsp-zero.nvim",
-		branch = "dev-v3",
+		branch = "v3.x",
+		dependencies = {
+			"neovim/nvim-lspconfig",
+		},
 		init = function()
 			local lsp = require("lsp-zero").preset({})
 			lsp.extend_lspconfig()
-			lsp.on_attach(function(client, bufnr)
+			lsp.on_attach(function(_, bufnr)
 				-- see :help lsp-zero-keybindings
 				-- to learn the available actions
 				lsp.default_keymaps({ buffer = bufnr })
@@ -37,19 +40,12 @@ return {
 		end,
 	},
 
-	-- LSP Support
-	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "hrsh7th/cmp-nvim-lsp" },
-		},
-	},
-
 	-- Autocompletion
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{ "L3MON4D3/LuaSnip" },
+			"hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
 		},
 	},
 

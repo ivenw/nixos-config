@@ -15,6 +15,8 @@
       # config
       config-nvim = "cd ~/nixos-config/home-manager/nvim && nvim";
 
+      pvim = "poetry run nvim";
+
       # dev shells
       dev-rust = "nix develop ~/nixos-config#rust -c $SHELL";
       dev-py311 = "nix develop ~/nixos-config#python311 -c $SHELL";

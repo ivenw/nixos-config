@@ -13,6 +13,10 @@ opt.termguicolors = true
 opt.number = true
 opt.relativenumber = true
 
+-- pane settings
+opt.splitright = true
+opt.splitbelow = true
+
 -- cursorline
 opt.cursorline = true
 

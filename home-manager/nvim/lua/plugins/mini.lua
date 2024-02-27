@@ -4,22 +4,13 @@ return {
 		version = false,
 		config = function()
 			require("mini.comment").setup({})
-			require("mini.pairs").setup({})
 			require("mini.surround").setup({})
-			-- require("mini.jump2d").setup({})
-			-- local minimap = require("mini.map")
-			-- minimap.setup({
-			-- 	integrations = {
-			-- 		minimap.gen_integration.builtin_search(),
-			-- 		minimap.gen_integration.gitsigns(),
-			-- 		minimap.gen_integration.diagnostic(),
-			-- 	},
-			-- 	symbols = { encode = minimap.gen_encode_symbols.dot("3x2") },
-			-- 	window = { show_integration_count = false },
-			-- })
+			require("mini.pairs").setup({})
+
 			local minifiles = require("mini.files")
 			minifiles.setup({})
 			vim.keymap.set("n", "<leader>tf", minifiles.open, { desc = "File browser" })
+
 			local miniclue = require("mini.clue")
 			miniclue.setup({
 				triggers = {
