@@ -72,6 +72,7 @@
         name = "rust";
         packages = with pkgs; [
           rustup
+          bacon
         ];
       };
       zig = pkgs.mkShell {

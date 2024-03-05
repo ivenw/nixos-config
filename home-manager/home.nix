@@ -57,6 +57,7 @@
     unzip
     yazi
     cloc
+    graphviz
 
     # linters and formatters
     alejandra
