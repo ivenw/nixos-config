@@ -9,7 +9,7 @@
     ./tmux
     ./alacritty
     ./wezterm
-
+    ./nixpkgs
     ./gnome.nix
 
     # Hyperland
@@ -75,6 +75,8 @@
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})
+    source-sans-pro
+    montserrat
   ];
 
   # Enable home-manager

@@ -87,10 +87,14 @@
           go
         ];
       };
-      node = pkgs.mkShell {
-        name = "node";
+      tf = pkgs.mkShell {
+        name = "tf";
         packages = with pkgs; [
-          nodejs_20
+          terraform
+          opentofu
+          tfsec
+          terramate
+          go
         ];
       };
     };

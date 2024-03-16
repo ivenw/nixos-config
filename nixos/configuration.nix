@@ -105,6 +105,7 @@
 
   # Enable ZSh and set as default
   programs.zsh.enable = true;
+  programs.fish.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
   environment.systemPackages = with pkgs; [
