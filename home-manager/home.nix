@@ -9,7 +9,6 @@
     ./tmux
     ./alacritty
     ./wezterm
-    ./nixpkgs
     ./gnome.nix
 
     # Hyperland
@@ -58,6 +57,7 @@
     yazi
     cloc
     graphviz
+    netcat-gnu
 
     # linters and formatters
     alejandra
@@ -72,6 +72,7 @@
     _1password-gui
     # vial
     font-manager
+    vscode-fhs
 
     # fonts
     (nerdfonts.override {fonts = ["JetBrainsMono"];})

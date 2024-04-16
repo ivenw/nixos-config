@@ -7,18 +7,31 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    flake-utils.url = "github:numtide/flake-utils";
+    nixpkgs-terraform.url = "github:stackbuilders/nixpkgs-terraform";
     # hardware.url = "github:nixos/nixos-hardware";
+  };
+
+  nixConfig = {
+    extra-substituters = "https://nixpkgs-terraform.cachix.org";
+    extra-trusted-public-keys = "nixpkgs-terraform.cachix.org-1:8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw=";
   };
 
   outputs = {
     nixpkgs,
     home-manager,
+    nixpkgs-terraform,
     ...
   } @ inputs: let
     username = "ivenw";
     hostname = "nixos";
     system = "x86_64-linux";
-    pkgs = import nixpkgs {inherit system;};
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [nixpkgs-terraform.overlays.default];
+    };
   in {
     # NixOS configuration entrypoint
     # Available through 'nixos-rebuild --flake .#your-hostname'
@@ -90,9 +103,11 @@
       tf = pkgs.mkShell {
         name = "tf";
         packages = with pkgs; [
-          terraform
+          terraform-versions."1.5.7"
           opentofu
+          tflint
           tfsec
+          terraform-docs
           terramate
           go
         ];
