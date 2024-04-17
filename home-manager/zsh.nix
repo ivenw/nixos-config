@@ -20,6 +20,7 @@
 
       # dev shells
       dev-rust = "nix develop ~/nixos-config#rust -c $SHELL";
+      dev-py310 = "nix develop ~/nixos-config#python310 -c $SHELL";
       dev-py311 = "nix develop ~/nixos-config#python311 -c $SHELL";
       dev-py312 = "nix develop ~/nixos-config#python312 -c $SHELL";
       dev-go = "nix develop ~/nixos-config#go -c $SHELL";

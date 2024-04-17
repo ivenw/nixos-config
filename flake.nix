@@ -81,6 +81,18 @@
           export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib"
         '';
       };
+      python310 = pkgs.mkShell {
+        name = "python310";
+        packages = with pkgs; [
+          python310
+          poetry
+          gcc
+          zlib
+        ];
+        shellHook = ''
+          export LD_LIBRARY_PATH="${pkgs.stdenv.cc.cc.lib}/lib:${pkgs.zlib}/lib"
+        '';
+      };
       rust = pkgs.mkShell {
         name = "rust";
         packages = with pkgs; [

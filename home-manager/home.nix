@@ -41,6 +41,7 @@
     bat
     gh
     azure-cli
+    # bicep
     pipx
     terraform
     terramate
