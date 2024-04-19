@@ -59,6 +59,7 @@
     cloc
     graphviz
     netcat-gnu
+    nh
 
     # linters and formatters
     alejandra
