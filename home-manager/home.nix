@@ -43,8 +43,6 @@
     azure-cli
     # bicep
     pipx
-    terraform
-    terramate
     fd
     fzf
     delta
