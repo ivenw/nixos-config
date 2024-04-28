@@ -18,6 +18,9 @@
       pvim = "poetry run nvim";
       ptest = "poetry run pytest";
 
+      lg = "lazygit";
+      ya = "yazi";
+
       # dev shells
       dev-rust = "nix develop ~/nixos-config#rust -c $SHELL";
       dev-py310 = "nix develop ~/nixos-config#python310 -c $SHELL";
