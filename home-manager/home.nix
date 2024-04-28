@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./git
+    ./lazygit
     ./bat.nix
     ./nvim
     ./zsh.nix
