@@ -58,7 +58,6 @@
     graphviz
     netcat-gnu
     nh
-    lazygit
 
     # linters and formatters
     alejandra
