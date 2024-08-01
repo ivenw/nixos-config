@@ -41,6 +41,9 @@
       # YAML
       yamllint
 
+      # SQL
+      sqlfluff
+
       # Web
       nodePackages.prettier
     ];

@@ -65,6 +65,7 @@
     stylua
     yamllint
     ruff
+    sqlfluff
 
     # gui apps
     chromium
